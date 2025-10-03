@@ -1,0 +1,16 @@
+# Ignore all .nii files
+*.nii
+*.nii.gz
+
+# It's often better to ignore the entire data directories
+/adni_task/ADNI
+/adni_task/MRI_Preprocessed_Data
+/adni_task/MRI_Raw_Data
+/AddNeuroMed/ANM_Image
+/AddNeuroMed/MRI_Processed
+/AddNeuroMed/Preprocessed_MRI
+/Images/
+
+# Ignore any other large file types you have
+*.dcm
+*.zip
