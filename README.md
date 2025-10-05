@@ -6,4 +6,4 @@ In this paper we have generated gene expression feature vector data from MRI 3D 
 
 ## Directory Structure
 
-**ADNI & AddNeuroMed** folder contains code and steps mentioned to achieve the targeted result mentioned in the paper.
+**ADNI_Task & AddNeuroMed** folder contains code and steps mentioned to achieve the targeted result mentioned in the paper.
