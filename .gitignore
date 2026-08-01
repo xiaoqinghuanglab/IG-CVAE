@@ -1,16 +1,53 @@
-# Ignore all .nii files
-*.nii
-*.nii.gz
+# Participant data and generated outputs
+/data/
+/Data/
+/Output/
+/output/
+/Archive/
+/logs/
 
-# It's often better to ignore the entire data directories
-/adni_task/ADNI
-/adni_task/MRI_Preprocessed_Data
-/adni_task/MRI_Raw_Data
-/AddNeuroMed/ANM_Image
-/AddNeuroMed/MRI_Processed
-/AddNeuroMed/Preprocessed_MRI
-/Images/
+# Installed Python and R environments
+/.venv/
+/venv/
+/.R/
 
-# Ignore any other large file types you have
-*.dcm
-*.zip
+# Application caches
+/.matplotlib/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Model checkpoints and generated features
+*.pt
+*.pth
+*.ckpt
+*.onnx
+
+# Runtime and HPC files
+slurm-*.out
+slurm-*.err
+*.log
+*.err
+
+# Temporary and obsolete copies
+*.backup
+*.before_selection_patch
+*~
+
+# Accidental and temporary project files
+/for
+/PY
+/split_script_sections.txt
+
+# Local credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Operating-system files
+.DS_Store
+Thumbs.db
