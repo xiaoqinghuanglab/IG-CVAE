@@ -1,8 +1,12 @@
 # Participant data and generated outputs
-/data/
+/data/*
+!/data/.gitkeep
 /Data/
-/Output/
+
+/Output/*
+!/Output/.gitkeep
 /output/
+
 /Archive/
 /logs/
 
