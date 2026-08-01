@@ -1,12 +1,49 @@
 # Participant data and generated outputs
+
+# Keep the expected input directory structure, but ignore its contents
 /data/*
-!/data/.gitkeep
-/Data/
+!/data/ADNI/
+!/data/AddNeuroMed/
 
+/data/ADNI/*
+!/data/ADNI/.gitkeep
+
+/data/AddNeuroMed/*
+!/data/AddNeuroMed/.gitkeep
+
+# Keep the expected output directory structure, but ignore generated contents
 /Output/*
-!/Output/.gitkeep
-/output/
+!/Output/Figure/
+!/Output/Logs/
+!/Output/Metrics/
+!/Output/Model/
+!/Output/Predictions/
+!/Output/QC/
+!/Output/Table/
 
+/Output/Figure/*
+!/Output/Figure/.gitkeep
+
+/Output/Logs/*
+!/Output/Logs/.gitkeep
+
+/Output/Metrics/*
+!/Output/Metrics/.gitkeep
+
+/Output/Model/*
+!/Output/Model/.gitkeep
+
+/Output/Predictions/*
+!/Output/Predictions/.gitkeep
+
+/Output/QC/*
+!/Output/QC/.gitkeep
+
+/Output/Table/*
+!/Output/Table/.gitkeep
+
+/Data/
+/output/
 /Archive/
 /logs/
 
