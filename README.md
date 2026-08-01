@@ -61,7 +61,7 @@ These atlas files are analysis resources and do not contain participant data.
 The currently available Python dependency specification is:
 
 ```text
-environment/requirements_gene_branch.txt
+environment/requirements.txt
 ```
 
 This file was originally prepared for the Gene branch and should not be interpreted as a complete environment specification for every pipeline component.
