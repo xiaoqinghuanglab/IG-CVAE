@@ -8,7 +8,7 @@ IG-CVAE is an MRI-conditioned conditional variational autoencoder for learning g
 IG-CVAE/
 ├── README.md
 ├── .gitignore
-├── environment/requirements.txt         Partial Python dependency list
+├── environment/requirements.txt         dependency list
 ├── data/
 │   ├── ADNI/                       Placeholder for private inputs
 │   └── AddNeuroMed/                Placeholder for private inputs
@@ -27,7 +27,7 @@ IG-CVAE/
 │   ├── 10_mlp.py
 │   ├── 11_covadj_cvae.py
 │   └── 12_pair_shuffle_test.py
-└── Output/Table/                  Published analysis and supplementary tables
+└── Output/Table/                  
 ```
 
 `Output/Table/` contains results for the gene and MRI branches, CVAE, regional and gene ablations, MLP, covariate-adjusted CVAE, pair-shuffle control, and supplementary tables. Participant-level expression and DEG design matrices in that tree are explicitly excluded by `.gitignore`. Other local output directories contain checkpoints, figures, logs, and intermediate representations and are not published here.
