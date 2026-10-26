@@ -8,7 +8,7 @@ IG-CVAE is an MRI-conditioned conditional variational autoencoder for learning g
 IG-CVAE/
 ├── README.md
 ├── .gitignore
-├── environment/requirements.txt         dependency list
+├── environment/requirements.txt         Python dependencies for Scripts 01–12
 ├── data/
 │   ├── ADNI/                       Placeholder for private inputs
 │   └── AddNeuroMed/                Placeholder for private inputs
@@ -36,7 +36,13 @@ IG-CVAE/
 
 Run commands from the repository root. Obtain ADNI and AddNeuroMed data independently under their access requirements. The tracked `data/` directories are placeholders. Some scripts use the path `data/AdNeuroMed/` while the tracked placeholder is `data/AddNeuroMed/`; ensure the local input directory matches the paths in the scripts before running.
 
-`environment/requirements.txt` was prepared for the gene branch and is not a complete specification for every stage. Training and regional scripts also need a compatible PyTorch installation and additional packages such as `nibabel`. Install the R DEG packages into the project library with:
+Use Python 3.12 for the versions listed in `environment/requirements.txt`. The file covers the direct third-party Python imports in Scripts 01–12, including PyTorch (`torch`) for training and NiBabel (`nibabel`) for MRI handling. Install a CPU or CUDA build of PyTorch suitable for your machine using the [official installation selector](https://pytorch.org/get-started/locally/), then install the remaining Python packages:
+
+```bash
+python -m pip install -r environment/requirements.txt
+```
+
+The requirement versions specify the package environment; they do not include the private input data or pretrained model checkpoints. Script 03 uses R; install its DEG packages into the project library with:
 
 ```bash
 Rscript scripts/00_install_r_deg_packages.R
@@ -153,4 +159,5 @@ Scripts 07–09 currently refer to branch checkpoints under `Output/main_model/M
 ADNI and AddNeuroMed participant-level data, trained checkpoints, and intermediate representations are not distributed here. The published `Output/Table/` files contain analysis results, but private inputs and locally fitted models are required for a complete rerun.
 
 IG-CVAE generates MRI-conditioned gene-feature representations. It does not reconstruct raw transcript abundance, measure regional brain gene expression, or establish causal MRI–gene relationships.
+
 
