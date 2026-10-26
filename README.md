@@ -13,7 +13,9 @@ The pipeline independently analyzes ADNI and AddNeuroMed and contains:
 7. Gene permutation analysis
 8. MRI regional zero-occlusion analysis
 9. Region–gene-feature analysis
-10. Supplementary-table export
+10. MLP baseline
+11. Covariate-adjusted CVAE
+12. Pair-shuffle control
 
 ## Repository structure
 
@@ -23,7 +25,7 @@ Resources/     Desikan–Killiany atlas resources used for regional analyses
 environment/   Software dependency specifications
 ```
 
-Participant-level data, trained models, generated outputs, logs, and local software environments are not included.
+Participant-level data, trained models, figures, logs, and local software environments are not included. Generated tables under `Output/Table/` are included.
 
 ## Analysis workflow
 
@@ -38,7 +40,9 @@ The principal scripts are intended to be run in the following order:
 7. `07_run_gene_ablation.py` — perform gene permutation analysis
 8. `08_run_mri_ablation.py` — perform regional MRI zero-occlusion analysis
 9. `09_run_cvae_ablation.py` — evaluate region-linked changes in generated gene-feature representations
-10. `17_export_full_ablation_supplementary_tables.py` — export supplementary ablation tables
+10. `10_mlp.py` — run the MLP baseline
+11. `11_covadj_cvae.py` — run the covariate-adjusted CVAE
+12. `12_pair_shuffle_test.py` — run the pair-shuffle control
 
 The R package installation helper is:
 
@@ -82,7 +86,7 @@ Generated tables, trained models, intermediate representations, figures, and log
 Output/
 ```
 
-These files are excluded from version control.
+Tables under `Output/Table/` are tracked; other generated outputs are excluded from version control.
 
 ## Interpretation
 

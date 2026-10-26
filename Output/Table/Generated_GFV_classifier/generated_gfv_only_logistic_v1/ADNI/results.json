@@ -1,0 +1,128 @@
+{
+  "bootstrap_replicates": 2000,
+  "cohort": "ADNI",
+  "cvae_provenance": {
+    "checkpoint": "Output/Model/CVAE/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "checkpoint_sha256": "9f22255b96b74a22228978350cccee1885bec0b3fc3d491e26d86cc74826410d",
+    "source": "original_frozen_CVAE_final_development_fit"
+  },
+  "downstream_classifier": {
+    "C": 1.0,
+    "class_weight": "balanced",
+    "max_iter": 2000,
+    "name": "logistic_regression",
+    "observed_GFV_used": false,
+    "solver": "lbfgs"
+  },
+  "experiment": "generated_GFV_only_AD_CN_classification",
+  "locked_test_bootstrap_95ci": {
+    "accuracy": [
+      0.8093645484949833,
+      0.8929765886287625
+    ],
+    "balanced_accuracy": [
+      0.8027063383492933,
+      0.8879844961240311
+    ],
+    "f1": [
+      0.7711864406779662,
+      0.8725868725868726
+    ],
+    "mcc": [
+      0.6117997983820861,
+      0.7813881745929341
+    ],
+    "pr_auc": [
+      0.7348447593638926,
+      0.8833897830188224
+    ],
+    "precision": [
+      0.7954500715819613,
+      0.907563025210084
+    ],
+    "roc_auc": [
+      0.8150467396260831,
+      0.911953944368445
+    ],
+    "sensitivity": [
+      0.7286821705426356,
+      0.8604651162790697
+    ],
+    "specificity": [
+      0.8470588235294118,
+      0.9352941176470588
+    ]
+  },
+  "locked_test_counts": {
+    "AD": 129,
+    "CN": 170,
+    "n": 299
+  },
+  "locked_test_metrics": {
+    "accuracy": 0.8528428093645485,
+    "balanced_accuracy": 0.8462836297309622,
+    "f1": 0.824,
+    "fn": 26,
+    "fp": 18,
+    "mcc": 0.6988413376349949,
+    "pr_auc": 0.8054032806143891,
+    "precision": 0.8512396694214877,
+    "roc_auc": 0.8673506611947104,
+    "sensitivity": 0.7984496124031008,
+    "specificity": 0.8941176470588236,
+    "tn": 152,
+    "tp": 103
+  },
+  "mri_branch_development_provenance": {
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "mri_model_sha256": "644bcadab736df4770df413e47af8657a4da937555891be32bfe450e41fec443",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "mri_branch_locked_test_provenance": {
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "mri_model_sha256": "644bcadab736df4770df413e47af8657a4da937555891be32bfe450e41fec443",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "run_tag": "generated_gfv_only_logistic_v1",
+  "scaler_rule": "StandardScaler fit only on CVAE-generated development GFV128; applied unchanged to CVAE-generated locked-test GFV128.",
+  "scientific_question": "Can an MRI-only participant be transformed into a CVAE-generated GFV128 representation that supports downstream AD/CN classification?",
+  "status": "complete",
+  "test_cvae_provenance": {
+    "checkpoint": "Output/Model/CVAE/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "checkpoint_sha256": "9f22255b96b74a22228978350cccee1885bec0b3fc3d491e26d86cc74826410d",
+    "source": "original_frozen_CVAE_final_development_fit"
+  },
+  "test_domain": "MRI locked test -> frozen MRI branch -> MFV128 -> frozen CVAE -> generated GFV128",
+  "train_metrics": {
+    "accuracy": 0.9857859531772575,
+    "balanced_accuracy": 0.9860988323363606,
+    "f1": 0.9831516352824579,
+    "fn": 6,
+    "fp": 11,
+    "mcc": 0.9708956978772569,
+    "pr_auc": 0.9959105852794194,
+    "precision": 0.9783037475345168,
+    "roc_auc": 0.9967622306164392,
+    "sensitivity": 0.9880478087649402,
+    "specificity": 0.984149855907781,
+    "tn": 683,
+    "tp": 496
+  },
+  "train_test_subject_overlap": 0,
+  "training_counts": {
+    "AD": 502,
+    "CN": 694,
+    "n": 1196
+  },
+  "training_domain": "MRI development -> frozen MRI branch -> MFV128 -> frozen CVAE -> generated GFV128"
+}

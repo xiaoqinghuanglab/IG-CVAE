@@ -1,0 +1,7 @@
+DUAL-COHORT DEVELOPMENT-ONLY DEG SUMMARY
+split_version: dual_cohort_independent_v1
+mode: ALL
+feature_panels: independent cohort-specific top 500 by limma raw P value
+locked_test_used_for_fitting_or_ranking: false
+ADNI: eligible=242; analyzed=242; locked_test_excluded=60; nominal_P_le_0.05=659; BH_FDR_le_0.05=0; top500_cutoff=3.7952493e-02
+AddNeuroMed: eligible=280; analyzed=269; locked_test_excluded=70; nominal_P_le_0.05=2072; BH_FDR_le_0.05=1661; top500_cutoff=5.4000912e-05

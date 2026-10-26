@@ -1,0 +1,72 @@
+{
+  "AD": 26,
+  "CN": 34,
+  "bootstrap_replicates": 2000,
+  "cohort": "ADNI",
+  "figure_components": [
+    "Output/Figure/Main/Figure2_components/Figure2_component_A_ADNI_gene_ROC_PR_locked_test.png",
+    "Output/Figure/Main/Figure2_components/Figure2_component_A_ADNI_gene_ROC_PR_locked_test.pdf"
+  ],
+  "metrics": {
+    "accuracy": 0.65,
+    "balanced_accuracy": 0.6006787330316742,
+    "brier": 0.3487654404171401,
+    "ece": 0.34883975237607956,
+    "f1": 0.36363636363636365,
+    "fn": 20,
+    "fp": 1,
+    "mcc": 0.3108185392004747,
+    "pr_auc": 0.6021060821259109,
+    "precision": 0.8571428571428571,
+    "roc_auc": 0.6459276018099547,
+    "sensitivity": 0.23076923076923078,
+    "specificity": 0.9705882352941176,
+    "tn": 33,
+    "tp": 6
+  },
+  "n": 60,
+  "status": "locked_test_complete",
+  "stratified_bootstrap_95ci": {
+    "accuracy": [
+      0.5833333333333334,
+      0.7170833333333311
+    ],
+    "balanced_accuracy": [
+      0.5237556561085973,
+      0.6867929864253386
+    ],
+    "brier": [
+      0.2842082572898239,
+      0.41102203547009186
+    ],
+    "f1": [
+      0.13793103448275862,
+      0.5555555555555556
+    ],
+    "mcc": [
+      0.10127795097543557,
+      0.48038446141526137
+    ],
+    "pr_auc": [
+      0.48080234149268547,
+      0.7829874655576631
+    ],
+    "precision": [
+      0.5714285714285714,
+      1.0
+    ],
+    "roc_auc": [
+      0.5,
+      0.7850961538461538
+    ],
+    "sensitivity": [
+      0.07692307692307693,
+      0.38461538461538464
+    ],
+    "specificity": [
+      0.9117647058823529,
+      1.0
+    ]
+  },
+  "threshold_fixed_from_development_OOF": 0.2066372036933899
+}

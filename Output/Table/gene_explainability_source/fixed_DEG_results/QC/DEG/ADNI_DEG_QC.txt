@@ -1,0 +1,17 @@
+cohort: ADNI
+contrast: AD - CN
+split_version: dual_cohort_independent_v1
+development_eligible: 242
+development_analyzed: 242
+development_excluded_missing_covariates: 0
+development_AD: 64
+development_CN: 178
+locked_test_excluded_from_DEG: 60
+genes_tested: 19031
+covariates: age, sex, and APOE e4 allele count
+model_formula: ~Diagnosis + Age + Sex + APOE4
+nominal_P_le_0.05: 659
+BH_FDR_le_0.05: 0
+top500_raw_P_cutoff: 3.7952493e-02
+locked_test_labels_used: false
+model_input: /N/project/SingleCell_Image/Ronak/Project_folder/Output/Model_input/Gene/ADNI_top500_gene_model_input.csv

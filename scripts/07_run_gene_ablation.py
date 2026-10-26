@@ -47,7 +47,7 @@ def device_from_arg(name):
     return torch.device(name)
 
 def load_fold_models(cohort, fold, device):
-    base = ROOT / "Output/Model/Gene_branch" / TAG / cohort / f"fold_{fold}"
+    base = ROOT / "Output/main_model/Model/Gene_branch" / TAG / cohort / f"fold_{fold}"
     scaler_path = base / "standard_scaler.joblib"
     scaler = joblib.load(scaler_path)
     models, provenance = [], []
@@ -89,7 +89,7 @@ def save_figure(summary, cohort):
     ax.set_title(f"{cohort}: top gene-branch permutation importance")
     ax.grid(axis="x", alpha=0.25)
     fig.tight_layout()
-    d = ROOT / "Output/Figure/Main/Figure4_components"
+    d = ROOT / "Output/main_model/Figure/Main/Figure4_components"
     d.mkdir(parents=True, exist_ok=True)
     stem = d / f"Figure4_component_{'A' if cohort == 'ADNI' else 'B'}_{cohort}_gene_permutation_importance_development"
     fig.savefig(str(stem) + ".png", dpi=600, bbox_inches="tight")

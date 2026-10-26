@@ -1,0 +1,333 @@
+{
+  "bootstrap_replicates": 2000,
+  "classifier": {
+    "C": 1.0,
+    "class_weight": "balanced",
+    "max_iter": 2000,
+    "name": "logistic_regression",
+    "random_state": 20261012,
+    "solver": "lbfgs"
+  },
+  "cohort": "AddNeuroMed",
+  "delta_vs_real_only": {
+    "cvae_augmented_vs_real": {
+      "accuracy": 0.02857142857142858,
+      "balanced_accuracy": 0.028594771241830075,
+      "f1": 0.0273972602739726,
+      "mcc": 0.05725975680412898,
+      "pr_auc": 0.008064938567073132,
+      "precision": 0.027027027027026973,
+      "roc_auc": 0.008986928104575131,
+      "sensitivity": 0.02777777777777779,
+      "specificity": 0.02941176470588225
+    }
+  },
+  "experiment": "observed_GFV_training_augmentation",
+  "metrics": {
+    "cvae_augmented": {
+      "accuracy": 0.7857142857142857,
+      "balanced_accuracy": 0.7851307189542484,
+      "f1": 0.7945205479452054,
+      "fn": 7,
+      "fp": 8,
+      "mcc": 0.5709615749897424,
+      "pr_auc": 0.8509216901671091,
+      "precision": 0.7837837837837838,
+      "roc_auc": 0.8447712418300654,
+      "sensitivity": 0.8055555555555556,
+      "specificity": 0.7647058823529411,
+      "tn": 26,
+      "tp": 29
+    },
+    "real_only": {
+      "accuracy": 0.7571428571428571,
+      "balanced_accuracy": 0.7565359477124183,
+      "f1": 0.7671232876712328,
+      "fn": 8,
+      "fp": 9,
+      "mcc": 0.5137018181856134,
+      "pr_auc": 0.8428567516000359,
+      "precision": 0.7567567567567568,
+      "roc_auc": 0.8357843137254902,
+      "sensitivity": 0.7777777777777778,
+      "specificity": 0.7352941176470589,
+      "tn": 25,
+      "tp": 28
+    }
+  },
+  "paired_bootstrap_delta": {
+    "cvae_augmented_vs_real": {
+      "accuracy": {
+        "bootstrap_p_one_sided_improvement": 0.12743628185907047,
+        "delta_95ci": [
+          0.0,
+          0.07142857142857151
+        ]
+      },
+      "balanced_accuracy": {
+        "bootstrap_p_one_sided_improvement": 0.12743628185907047,
+        "delta_95ci": [
+          0.0,
+          0.07189542483660138
+        ]
+      },
+      "f1": {
+        "bootstrap_p_one_sided_improvement": 0.12743628185907047,
+        "delta_95ci": [
+          0.0,
+          0.07454388306066884
+        ]
+      },
+      "mcc": {
+        "bootstrap_p_one_sided_improvement": 0.12743628185907047,
+        "delta_95ci": [
+          0.0,
+          0.14594759429126408
+        ]
+      },
+      "pr_auc": {
+        "bootstrap_p_one_sided_improvement": 0.111944027986007,
+        "delta_95ci": [
+          -0.00393583629008965,
+          0.021813798380319195
+        ]
+      },
+      "precision": {
+        "bootstrap_p_one_sided_improvement": 0.12743628185907047,
+        "delta_95ci": [
+          0.0,
+          0.0773385885885886
+        ]
+      },
+      "roc_auc": {
+        "bootstrap_p_one_sided_improvement": 0.15642178910544727,
+        "delta_95ci": [
+          -0.008169934640522958,
+          0.02777777777777779
+        ]
+      },
+      "sensitivity": {
+        "bootstrap_p_one_sided_improvement": 0.3598200899550225,
+        "delta_95ci": [
+          0.0,
+          0.08333333333333337
+        ]
+      },
+      "specificity": {
+        "bootstrap_p_one_sided_improvement": 0.3453273363318341,
+        "delta_95ci": [
+          0.0,
+          0.08823529411764708
+        ]
+      }
+    }
+  },
+  "provenance": {
+    "cvae": {
+      "checkpoint": "Output/Model/CVAE/dual_cohort_independent_v1/AddNeuroMed/final_development_fit.pt",
+      "checkpoint_sha256": "1af942901bdfd9012f7b5aef0100d6912e805002ba4c6c5d6f84434a1e320000",
+      "source": "original_frozen_CVAE_final_development_fit"
+    },
+    "cvae_script": "scripts/06_run_cvae.py",
+    "cvae_script_sha256": "5075f776abec88f1039099f94d6c2f2f3faa078d8132be02f18b004090454289",
+    "gene_development": {
+      "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/seed_1_gene_encoder_classifier.pt",
+      "gene_model_sha256": "83f0244da96a430e6cfa79dae418b174e39d9041e895985b58e99c27c0976186",
+      "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/standard_scaler.joblib",
+      "gene_scaler_sha256": "f2fe9ebeb232f2870e4dce4e59f5fdb303a2dbb48446fec20692a4abe5727834",
+      "gene_seed": 20261617
+    },
+    "gene_test": {
+      "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/seed_1_gene_encoder_classifier.pt",
+      "gene_model_sha256": "83f0244da96a430e6cfa79dae418b174e39d9041e895985b58e99c27c0976186",
+      "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/standard_scaler.joblib",
+      "gene_scaler_sha256": "f2fe9ebeb232f2870e4dce4e59f5fdb303a2dbb48446fec20692a4abe5727834",
+      "gene_seed": 20261617
+    },
+    "mri_augmentation": {
+      "mri_epochs": -1,
+      "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/final_development_fit.pt",
+      "mri_model_sha256": "aff33ded71e41c112fb34ea9019b0111ff23fda4e9eeb7a2da746eefb080b7b2",
+      "mri_target_shape": [
+        48,
+        56,
+        48
+      ]
+    },
+    "split_manifest_sha256": "f854db35b38db872eff71aaaef91aa6d2ca00931b37fa65b2c9d4aabd174dada"
+  },
+  "representation_rule": "All observed real GFVs use the final Gene branch seed-1 encoder, matching the GFV target coordinate used by CVAE.",
+  "status": "complete",
+  "stratified_paired_bootstrap_95ci": {
+    "cvae_augmented": {
+      "accuracy": [
+        0.6857142857142857,
+        0.8714285714285714
+      ],
+      "balanced_accuracy": [
+        0.6862745098039216,
+        0.8717320261437909
+      ],
+      "f1": [
+        0.6944444444444444,
+        0.88
+      ],
+      "mcc": [
+        0.37254901960784315,
+        0.7460128315052221
+      ],
+      "pr_auc": [
+        0.7626329735197314,
+        0.93269527630137
+      ],
+      "precision": [
+        0.6829268292682927,
+        0.8918918918918919
+      ],
+      "roc_auc": [
+        0.7491625816993465,
+        0.9272875816993464
+      ],
+      "sensitivity": [
+        0.6666666666666666,
+        0.9166666666666666
+      ],
+      "specificity": [
+        0.6176470588235294,
+        0.8830882352941136
+      ]
+    },
+    "real_only": {
+      "accuracy": [
+        0.6571428571428571,
+        0.8571428571428571
+      ],
+      "balanced_accuracy": [
+        0.6560457516339869,
+        0.8553921568627451
+      ],
+      "f1": [
+        0.6666666666666666,
+        0.8571428571428571
+      ],
+      "mcc": [
+        0.3137254901960784,
+        0.7140522875816994
+      ],
+      "pr_auc": [
+        0.754993717197538,
+        0.9273518037536833
+      ],
+      "precision": [
+        0.6578759398496241,
+        0.868421052631579
+      ],
+      "roc_auc": [
+        0.7426266339869281,
+        0.9207720588235293
+      ],
+      "sensitivity": [
+        0.6388888888888888,
+        0.9166666666666666
+      ],
+      "specificity": [
+        0.5882352941176471,
+        0.8823529411764706
+      ]
+    }
+  },
+  "synthetic_pool": {
+    "AD": 8,
+    "CN": 3,
+    "available_n": 11,
+    "n": 11,
+    "rule": "MRI development participants absent from the entire Gene-branch manifest",
+    "selected_n": 11,
+    "selection_rule": "For ADNI, CVAE augmentation used 25% of the observed real-GFV development sample. For AddNeuroMed, all 11 available MRI-only development participants were used. Diagnosis composition was matched as closely as possible."
+  },
+  "test": {
+    "AD": 36,
+    "CN": 34,
+    "feature_type": "real_observed_seed1_GFV128",
+    "n": 70,
+    "same_participants_for_all_three": true,
+    "subject_ids": [
+      "KPOADC007",
+      "KPOADC008",
+      "KPOADC014",
+      "KPOADC027",
+      "KPOADC028",
+      "KPOADC039",
+      "KPOADC046",
+      "KPOCTL005",
+      "KPOCTL007",
+      "KPOCTL011",
+      "KPOCTL027",
+      "KPOCTL028",
+      "KPOCTL030",
+      "KPOCTL031",
+      "KPOCTL041",
+      "LDZADC006",
+      "LDZADC007",
+      "LDZADC008",
+      "LDZADC009",
+      "LDZADC017",
+      "LDZADC018",
+      "LDZADC023",
+      "LDZADC025",
+      "LDZADC032",
+      "LDZADC035",
+      "LDZADC036",
+      "LDZADC038",
+      "LDZADC039",
+      "LDZADC042",
+      "LDZCTL003",
+      "LDZCTL004",
+      "LDZCTL019",
+      "LDZCTL020",
+      "LDZCTL023",
+      "LDZCTL024",
+      "LDZCTL028",
+      "LNDADC021",
+      "LNDADC023",
+      "LNDADC026",
+      "LNDADC032",
+      "LNDADC038",
+      "LNDADC040",
+      "LNDCTL035",
+      "LNDCTL043",
+      "LNDCTL070",
+      "LNDCTL072",
+      "LNDCTL075",
+      "PRGADC006",
+      "PRGADC015",
+      "PRGADC033",
+      "PRGADC035",
+      "PRGADC052",
+      "PRGCTL011",
+      "PRGCTL015",
+      "PRGCTL019",
+      "PRGCTL020",
+      "PRGCTL021",
+      "PRGCTL022",
+      "PRGCTL035",
+      "PRGCTL036",
+      "PRGCTL038",
+      "PRGCTL047",
+      "PRGCTL052",
+      "PRGCTL053",
+      "THSADC009",
+      "THSADC015",
+      "THSADC025",
+      "THSADC041",
+      "THSCTL002",
+      "THSCTL012"
+    ]
+  },
+  "training_counts": {
+    "cvae_augmented": 291,
+    "observed_real": 280,
+    "real_only": 280,
+    "synthetic_added": 11
+  }
+}

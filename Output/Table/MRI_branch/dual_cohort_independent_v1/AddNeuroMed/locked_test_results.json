@@ -1,0 +1,74 @@
+{
+  "AD": 11,
+  "CN": 11,
+  "bootstrap_replicates": 2000,
+  "cohort": "AddNeuroMed",
+  "figure_components": [
+    "Output/Figure/Main/Figure2_components/Figure2_component_D_AddNeuroMed_MRI_ROC_PR_locked_test.png",
+    "Output/Figure/Main/Figure2_components/Figure2_component_D_AddNeuroMed_MRI_ROC_PR_locked_test.pdf"
+  ],
+  "final_epochs_from_mean_CV_best_epoch": 8,
+  "metrics": {
+    "accuracy": 0.5,
+    "balanced_accuracy": 0.5,
+    "brier": 0.24944893359867074,
+    "ece": 0.012218979271975405,
+    "f1": 0.0,
+    "fn": 11,
+    "fp": 0,
+    "mcc": 0.0,
+    "pr_auc": 0.7200289906172258,
+    "precision": 0.0,
+    "roc_auc": 0.7520661157024794,
+    "sensitivity": 0.0,
+    "specificity": 1.0,
+    "threshold": 0.5879974961280823,
+    "tn": 11,
+    "tp": 0
+  },
+  "n": 22,
+  "status": "locked_test_complete",
+  "stratified_bootstrap_95ci": {
+    "accuracy": [
+      0.5,
+      0.5
+    ],
+    "balanced_accuracy": [
+      0.5,
+      0.5
+    ],
+    "brier": [
+      0.2487766761498023,
+      0.2501588978394176
+    ],
+    "f1": [
+      0.0,
+      0.0
+    ],
+    "mcc": [
+      0.0,
+      0.0
+    ],
+    "pr_auc": [
+      0.5439600896179844,
+      0.9424242424242424
+    ],
+    "precision": [
+      0.0,
+      0.0
+    ],
+    "roc_auc": [
+      0.5289256198347108,
+      0.9338842975206612
+    ],
+    "sensitivity": [
+      0.0,
+      0.0
+    ],
+    "specificity": [
+      1.0,
+      1.0
+    ]
+  },
+  "threshold_fixed_from_development_OOF": 0.5879974961280823
+}

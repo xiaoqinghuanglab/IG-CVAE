@@ -11,12 +11,12 @@ import numpy as np
 import pandas as pd
 import torch
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path("/N/project/SingleCell_Image/Ronak/Project_folder")
 ATLAS = ROOT / "Resources/Atlas/DesikanKilliany/desikanKilliany_on_modelgrid_48x56x48.npy"
 ATLAS_DIR = ROOT / "Resources/Atlas/DesikanKilliany"
-CVAE_ROOT = ROOT / "Output/Model/CVAE/dual_cohort_independent_v1"
-MRI_ROOT = ROOT / "Output/Model/MRI_branch/dual_cohort_independent_v1"
-GENE_ABLATION_ROOT = ROOT / "Output/Table/Gene_ablation/dual_cohort_top500_v1"
+CVAE_ROOT = ROOT / "Output/main_model/Model/CVAE/dual_cohort_independent_v1"
+MRI_ROOT = ROOT / "Output/main_model/Model/MRI_branch/dual_cohort_independent_v1"
+GENE_ABLATION_ROOT = ROOT / "Output/main_model/Table/Gene_ablation/dual_cohort_top500_v1"
 N_FOLDS = 5
 TOP_GENES = 20
 
@@ -38,7 +38,7 @@ def sha256(path):
     return h.hexdigest()
 
 def outdir(kind, cohort):
-    p = ROOT / "Output" / kind / "CVAE_ablation" / "dual_cohort_independent_v1" / cohort
+    p = ROOT / "Output" / "main_model" / kind / "CVAE_ablation" / "dual_cohort_independent_v1" / cohort
     p.mkdir(parents=True, exist_ok=True)
     return p
 
@@ -153,55 +153,6 @@ def validate(cohort):
     }, indent=2, sort_keys=True))
 
 
-def make_figures(region_summary, effect_mean, gene_names, region_ids, region_names, cohort):
-    import matplotlib.pyplot as plt
-
-    panel_region = "A" if cohort == "ADNI" else "B"
-    panel_matrix = "C" if cohort == "ADNI" else "D"
-    figure_dir = ROOT / "Output/Figure/Main/Figure5_components"
-    figure_dir.mkdir(parents=True, exist_ok=True)
-
-    top = region_summary.nlargest(20, "generated_gfv_shift_mean").sort_values(
-        "generated_gfv_shift_mean", ascending=True)
-    fig, ax = plt.subplots(figsize=(8.2, 6.8))
-    ax.barh(top.region_name, top.generated_gfv_shift_mean,
-            xerr=top.generated_gfv_shift_sd, color="#762A83",
-            edgecolor="black", linewidth=0.45, capsize=2.5)
-    ax.set_xlabel("Mean shift in generated GFV (scaled-feature L2 distance)")
-    ax.set_ylabel("")
-    ax.set_title(f"{cohort}: CVAE regional occlusion (development only)")
-    ax.tick_params(axis="y", labelsize=8)
-    ax.grid(axis="x", alpha=0.22, linewidth=0.6)
-    fig.tight_layout()
-    stem = figure_dir / f"Figure5_component_{panel_region}_{cohort}_CVAE_regional_GFV_shift_development"
-    fig.savefig(str(stem) + ".png", dpi=400, bbox_inches="tight")
-    fig.savefig(str(stem) + ".pdf", bbox_inches="tight")
-    plt.close(fig)
-
-    selected_regions = np.argsort(region_summary.generated_gfv_shift_mean.to_numpy())[::-1][:12]
-    selected_genes = np.argsort(effect_mean[selected_regions].mean(axis=0))[::-1][:12]
-    heat = effect_mean[np.ix_(selected_regions, selected_genes)]
-
-    fig, ax = plt.subplots(figsize=(9.0, 7.0))
-    image = ax.imshow(heat, aspect="auto", cmap="magma")
-    ax.set_xticks(range(len(selected_genes)))
-    ax.set_xticklabels([gene_names[i] for i in selected_genes], rotation=55,
-                       ha="right", fontsize=8)
-    ax.set_yticks(range(len(selected_regions)))
-    ax.set_yticklabels([region_names[region_ids[i]] for i in selected_regions],
-                       fontsize=8)
-    ax.set_title(f"{cohort}: projected gene-feature shifts after regional occlusion")
-    cb = fig.colorbar(image, ax=ax, fraction=0.035, pad=0.03)
-    cb.set_label("Mean absolute projected gene-feature shift (z units)", fontsize=9)
-    fig.tight_layout()
-    stem2 = figure_dir / f"Figure5_component_{panel_matrix}_{cohort}_CVAE_gene_region_projection_development"
-    fig.savefig(str(stem2) + ".png", dpi=400, bbox_inches="tight")
-    fig.savefig(str(stem2) + ".pdf", bbox_inches="tight")
-    plt.close(fig)
-    return [str(stem.relative_to(ROOT)) + ".png",
-            str(stem.relative_to(ROOT)) + ".pdf",
-            str(stem2.relative_to(ROOT)) + ".png",
-            str(stem2.relative_to(ROOT)) + ".pdf"]
 
 def run(cohort, device):
     from sklearn.linear_model import Ridge
@@ -311,8 +262,6 @@ def run(cohort, device):
         absolute_effect=effects, signed_effect=signed, generated_gfv_shift=gfv_shifts,
         label_ids=np.asarray(region_ids), gene_names=np.asarray(gene_names))
 
-    components = make_figures(
-        region_summary, effect_mean, gene_names, region_ids, region_names, cohort)
     outdir("QC", cohort).joinpath("provenance.json").write_text(json.dumps({
         "cohort": cohort,
         "method": "held_out_fold_CVAE_region_occlusion_with_train_fold_GFV_to_gene_projection",
@@ -321,7 +270,6 @@ def run(cohort, device):
         "atlas_regions_tested": int(len(region_ids)),
         "genes_projected": gene_names,
         "fold_provenance": provenance,
-        "figure_components": components,
     }, indent=2))
 
     print("\nTOP 10 PROJECTED GENE-REGION EFFECTS")

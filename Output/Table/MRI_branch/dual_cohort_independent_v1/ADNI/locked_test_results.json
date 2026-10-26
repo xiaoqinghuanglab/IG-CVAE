@@ -1,0 +1,74 @@
+{
+  "AD": 129,
+  "CN": 170,
+  "bootstrap_replicates": 2000,
+  "cohort": "ADNI",
+  "figure_components": [
+    "Output/Figure/Main/Figure2_components/Figure2_component_C_ADNI_MRI_ROC_PR_locked_test.png",
+    "Output/Figure/Main/Figure2_components/Figure2_component_C_ADNI_MRI_ROC_PR_locked_test.pdf"
+  ],
+  "final_epochs_from_mean_CV_best_epoch": 32,
+  "metrics": {
+    "accuracy": 0.8327759197324415,
+    "balanced_accuracy": 0.8118103055175558,
+    "brier": 0.13101274989047054,
+    "ece": 0.10480378304038158,
+    "f1": 0.7727272727272727,
+    "fn": 44,
+    "fp": 6,
+    "mcc": 0.67125481294903,
+    "pr_auc": 0.9217770650538285,
+    "precision": 0.9340659340659341,
+    "roc_auc": 0.9415868673050616,
+    "sensitivity": 0.6589147286821705,
+    "specificity": 0.9647058823529412,
+    "threshold": 0.52,
+    "tn": 164,
+    "tp": 85
+  },
+  "n": 299,
+  "status": "locked_test_complete",
+  "stratified_bootstrap_95ci": {
+    "accuracy": [
+      0.7926421404682275,
+      0.8695652173913043
+    ],
+    "balanced_accuracy": [
+      0.7681030551755585,
+      0.8536679206566347
+    ],
+    "brier": [
+      0.10174798565150225,
+      0.16154363698723265
+    ],
+    "f1": [
+      0.7081339712918661,
+      0.8303609261501211
+    ],
+    "mcc": [
+      0.5887429335703707,
+      0.7460465171919848
+    ],
+    "pr_auc": [
+      0.8798402625919329,
+      0.9541770238705513
+    ],
+    "precision": [
+      0.8811881188118812,
+      0.9782608695652174
+    ],
+    "roc_auc": [
+      0.9137688098495211,
+      0.9638885088919289
+    ],
+    "sensitivity": [
+      0.5736434108527132,
+      0.7441860465116279
+    ],
+    "specificity": [
+      0.9352941176470588,
+      0.9882352941176471
+    ]
+  },
+  "threshold_fixed_from_development_OOF": 0.52
+}

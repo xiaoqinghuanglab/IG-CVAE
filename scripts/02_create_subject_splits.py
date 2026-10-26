@@ -1,21 +1,8 @@
 #!/usr/bin/env python3
 
 """
-Create deterministic subject-level splits for the dual-cohort XIG-CVAE study.
+Create deterministic subject-level splits for the dual-cohort IG-CVAE study.
 
-Primary design
---------------
-1. ADNI and AddNeuroMed are analyzed as independent parallel cohorts.
-2. Each cohort receives model-specific development and locked-test sets.
-3. Approximately 20% of each eligible model population is locked for testing.
-4. Within each cohort, the CVAE test is a common paired core included in the
-   corresponding gene- and MRI-branch locked tests.
-5. Gene and MRI locked tests contain the paired core plus modality-specific
-   subjects when necessary to reach approximately 20%.
-6. Five-fold assignments are created independently within each cohort.
-7. Paired development subjects retain the same fold across all three models.
-8. No preprocessing fitting, DEG selection, model fitting, or hyperparameter
-   selection may use locked-test subjects.
 """
 
 from __future__ import annotations

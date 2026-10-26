@@ -1,0 +1,72 @@
+{
+  "AD": 36,
+  "CN": 34,
+  "bootstrap_replicates": 2000,
+  "cohort": "AddNeuroMed",
+  "figure_components": [
+    "Output/Figure/Main/Figure2_components/Figure2_component_B_AddNeuroMed_gene_ROC_PR_locked_test.png",
+    "Output/Figure/Main/Figure2_components/Figure2_component_B_AddNeuroMed_gene_ROC_PR_locked_test.pdf"
+  ],
+  "metrics": {
+    "accuracy": 0.7857142857142857,
+    "balanced_accuracy": 0.7834967320261439,
+    "brier": 0.17669954705078286,
+    "ece": 0.14978399840848786,
+    "f1": 0.8051948051948052,
+    "fn": 5,
+    "fp": 10,
+    "mcc": 0.575278090541373,
+    "pr_auc": 0.8645657143301655,
+    "precision": 0.7560975609756098,
+    "roc_auc": 0.8513071895424836,
+    "sensitivity": 0.8611111111111112,
+    "specificity": 0.7058823529411765,
+    "tn": 24,
+    "tp": 31
+  },
+  "n": 70,
+  "status": "locked_test_complete",
+  "stratified_bootstrap_95ci": {
+    "accuracy": [
+      0.6857142857142857,
+      0.8714285714285714
+    ],
+    "balanced_accuracy": [
+      0.684640522875817,
+      0.8709150326797386
+    ],
+    "brier": [
+      0.10857072241203003,
+      0.25521224284113475
+    ],
+    "f1": [
+      0.7222222222222222,
+      0.8800588235294114
+    ],
+    "mcc": [
+      0.38877613805618977,
+      0.7460963505536646
+    ],
+    "pr_auc": [
+      0.7841898659811566,
+      0.9354976627754108
+    ],
+    "precision": [
+      0.6666666666666666,
+      0.8611111111111112
+    ],
+    "roc_auc": [
+      0.7532679738562091,
+      0.9281249999999999
+    ],
+    "sensitivity": [
+      0.75,
+      0.9722222222222222
+    ],
+    "specificity": [
+      0.5588235294117647,
+      0.8529411764705882
+    ]
+  },
+  "threshold_fixed_from_development_OOF": 0.359009712934494
+}

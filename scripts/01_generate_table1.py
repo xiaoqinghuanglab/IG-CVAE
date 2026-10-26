@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
 """Create manuscript Table 1 from prepared ADNI and AdNeuroMed metadata.
-
-Source files are read-only. ADNI MRI paths are resolved relative to the project
-root, so the script is portable and does not depend on stale absolute paths.
 """
 
 from __future__ import annotations
@@ -29,9 +26,10 @@ except ImportError as exc:
 
 
 TITLE = "Table 1. Characteristics of the study sample."
-HEADER = ["Variable", "AD", "Control", "Total", "P-Value"]
+HEADER = ["Variable", "AD", "Control", "Total", "P-Value", "Effect Size"]
 
-# SHA256 of every displayed cell in the supplied reference table.
+# SHA256 of the original five-column supplied reference table.
+# The added Effect Size column is excluded from this legacy-reference check.
 REFERENCE_SHA256 = (
     "076b23df739a4b1cd64800ffe4caa33fe12aa23bf71ee743bfebaace3cea80ee"
 )
@@ -222,6 +220,9 @@ def load_samples(
     adni_root = data_root / "ADNI"
     anm_root = data_root / "AdNeuroMed"
 
+    # -------------------------
+    # ADNI
+    # -------------------------
     adni_ge = standardize(
         adni_root / "Paired_data_metadata.csv"
     )
@@ -231,7 +232,8 @@ def load_samples(
             "ADNI paired metadata contains missing bids_id values"
         )
 
-    # Resolve ADNI paths portably instead of trusting stale mri_abs_path.
+    # Resolve ADNI MRI paths portably instead of trusting stale
+    # mri_abs_path values in the metadata.
     corrected_paths = adni_ge["bids_id"].map(
         lambda bids_id:
         adni_root / "paired_MRI" / f"{bids_id}.nii.gz"
@@ -240,6 +242,61 @@ def load_samples(
     adni_paired = adni_ge.loc[
         corrected_paths.map(Path.is_file)
     ].copy()
+
+    adni_mri_only = standardize(
+        adni_root / "mri_only_metadata.csv"
+    )
+
+    # The imaging branch uses every participant with MRI:
+    # paired MRI-GE participants + MRI-only participants.
+    adni_overlap = (
+        set(adni_paired["subject_id"])
+        & set(adni_mri_only["subject_id"])
+    )
+
+    if adni_overlap:
+        raise ValueError(
+            "ADNI paired and MRI-only metadata overlap for "
+            f"{len(adni_overlap)} subject(s): "
+            f"{sorted(adni_overlap)[:10]}"
+        )
+
+    adni_mri = pd.concat(
+        [adni_paired, adni_mri_only],
+        ignore_index=True,
+    )
+
+    # -------------------------
+    # AddNeuroMed
+    # -------------------------
+    anm_ge = standardize(
+        anm_root / "gene_expression_metadata.csv"
+    )
+
+    anm_paired = standardize(
+        anm_root / "Paired_data_metadata.csv"
+    )
+
+    anm_mri_only = standardize(
+        anm_root / "mri_only_metadata.csv"
+    )
+
+    anm_overlap = (
+        set(anm_paired["subject_id"])
+        & set(anm_mri_only["subject_id"])
+    )
+
+    if anm_overlap:
+        raise ValueError(
+            "AddNeuroMed paired and MRI-only metadata overlap for "
+            f"{len(anm_overlap)} subject(s): "
+            f"{sorted(anm_overlap)[:10]}"
+        )
+
+    anm_mri = pd.concat(
+        [anm_paired, anm_mri_only],
+        ignore_index=True,
+    )
 
     samples = [
         (
@@ -251,38 +308,30 @@ def load_samples(
             adni_paired,
         ),
         (
-            "ADNI MRI-only sample",
-            standardize(
-                adni_root / "mri_only_metadata.csv"
-            ),
+            "ADNI MRI sample",
+            adni_mri,
         ),
         (
             "AdNeuroMed Gene Expression sample",
-            standardize(
-                anm_root / "gene_expression_metadata.csv"
-            ),
+            anm_ge,
         ),
         (
             "AdNeuroMed paired MRI-GE sample",
-            standardize(
-                anm_root / "Paired_data_metadata.csv"
-            ),
+            anm_paired,
         ),
         (
-            "AdNeuroMed MRI-only sample",
-            standardize(
-                anm_root / "mri_only_metadata.csv"
-            ),
+            "AdNeuroMed MRI sample",
+            anm_mri,
         ),
     ]
 
     expected_counts = {
         "ADNI Gene Expression sample": (90, 212, 302),
         "ADNI paired MRI-GE sample": (85, 204, 289),
-        "ADNI MRI-only sample": (546, 660, 1206),
+        "ADNI MRI sample": (631, 864, 1495),
         "AdNeuroMed Gene Expression sample": (181, 169, 350),
         "AdNeuroMed paired MRI-GE sample": (46, 52, 98),
-        "AdNeuroMed MRI-only sample": (10, 3, 13),
+        "AdNeuroMed MRI sample": (56, 55, 111),
     }
 
     for label, frame in samples:
@@ -299,7 +348,6 @@ def load_samples(
             )
 
     return samples
-
 
 def mean_sd(values: pd.Series) -> str:
     values = (
@@ -393,6 +441,103 @@ def chi_square_p(
     )
 
 
+def cohen_d(
+    ad: pd.Series,
+    control: pd.Series,
+) -> float:
+    """Cohen's d for a continuous AD-vs-control comparison."""
+
+    ad_values = (
+        pd.to_numeric(ad, errors="coerce")
+        .dropna()
+        .astype(float)
+    )
+    control_values = (
+        pd.to_numeric(control, errors="coerce")
+        .dropna()
+        .astype(float)
+    )
+
+    n_ad = len(ad_values)
+    n_control = len(control_values)
+
+    if n_ad < 2 or n_control < 2:
+        return math.nan
+
+    pooled_variance = (
+        (n_ad - 1) * ad_values.var(ddof=1)
+        + (n_control - 1) * control_values.var(ddof=1)
+    ) / (n_ad + n_control - 2)
+
+    if not math.isfinite(pooled_variance) or pooled_variance <= 0:
+        return math.nan
+
+    pooled_sd = math.sqrt(pooled_variance)
+
+    return float(
+        (ad_values.mean() - control_values.mean())
+        / pooled_sd
+    )
+
+
+def cramers_v(
+    ad: pd.Series,
+    control: pd.Series,
+    categories: list[object],
+) -> float:
+    """Cramer's V for a categorical AD-vs-control comparison."""
+
+    observed = np.asarray(
+        [
+            [
+                int((ad == category).sum())
+                for category in categories
+            ],
+            [
+                int((control == category).sum())
+                for category in categories
+            ],
+        ],
+        dtype=int,
+    )
+
+    # Remove categories absent from both groups.
+    observed = observed[:, observed.sum(axis=0) > 0]
+
+    if observed.shape[1] < 2:
+        return math.nan
+
+    n = int(observed.sum())
+    denominator_df = min(
+        observed.shape[0] - 1,
+        observed.shape[1] - 1,
+    )
+
+    if n == 0 or denominator_df <= 0:
+        return math.nan
+
+    chi2 = float(
+        chi2_contingency(
+            observed,
+            correction=False,
+        ).statistic
+    )
+
+    return math.sqrt(
+        chi2 / (n * denominator_df)
+    )
+
+
+def format_effect(
+    value: float,
+    label: str,
+) -> str:
+    if not math.isfinite(value):
+        return ""
+
+    return f"{label}={value:.3f}"
+
+
 def build_section(
     label: str,
     frame: pd.DataFrame,
@@ -402,12 +547,13 @@ def build_section(
     total = frame
 
     rows = [
-        [label, "", "", "", ""],
+        [label, "", "", "", "", ""],
         [
             "",
             f"N={len(ad)}",
             f"N={len(control)}",
             f"N={len(total)}",
+            "",
             "",
         ],
         [
@@ -421,16 +567,31 @@ def build_section(
                     control["age"],
                 )
             ),
+            format_effect(
+                cohen_d(
+                    ad["age"],
+                    control["age"],
+                ),
+                "d",
+            ),
         ],
     ]
+
+    sex_categories = ["F", "M"]
 
     sex_p = chi_square_p(
         ad["sex"],
         control["sex"],
-        ["F", "M"],
+        sex_categories,
     )
 
-    for index, category in enumerate(["F", "M"]):
+    sex_v = cramers_v(
+        ad["sex"],
+        control["sex"],
+        sex_categories,
+    )
+
+    for index, category in enumerate(sex_categories):
         rows.append(
             [
                 f"Sex: {category}",
@@ -447,12 +608,19 @@ def build_section(
                     len(total),
                 ),
                 format_p(sex_p) if index == 0 else "",
+                format_effect(sex_v, "V") if index == 0 else "",
             ]
         )
 
     apoe_categories = [0.0, 1.0, 2.0]
 
     apoe_p = chi_square_p(
+        ad["apoe4"],
+        control["apoe4"],
+        apoe_categories,
+    )
+
+    apoe_v = cramers_v(
         ad["apoe4"],
         control["apoe4"],
         apoe_categories,
@@ -487,6 +655,7 @@ def build_section(
                     total_apoe_denominator,
                 ),
                 format_p(apoe_p) if index == 0 else "",
+                format_effect(apoe_v, "V") if index == 0 else "",
             ]
         )
 
@@ -506,6 +675,7 @@ def build_section(
                     int(total["apoe4"].isna().sum()),
                     len(total),
                 ),
+                "",
                 "",
             ]
         )
@@ -532,6 +702,12 @@ def build_section(
             batches,
         )
 
+        batch_v = cramers_v(
+            ad["batch"],
+            control["batch"],
+            batches,
+        )
+
         for index, batch in enumerate(batches):
             rows.append(
                 [
@@ -549,11 +725,11 @@ def build_section(
                         len(total),
                     ),
                     format_p(batch_p) if index == 0 else "",
+                    format_effect(batch_v, "V") if index == 0 else "",
                 ]
             )
 
     return rows
-
 
 def build_table(
     samples: list[tuple[str, pd.DataFrame]],
@@ -590,11 +766,11 @@ def write_csv(
         writer = csv.writer(handle)
 
         writer.writerow(
-            [TITLE, "", "", "", ""]
+            [TITLE, "", "", "", "", ""]
         )
 
         writer.writerow(
-            ["", "", "", "", ""]
+            ["", "", "", "", "", ""]
         )
 
         writer.writerow(HEADER)
@@ -610,8 +786,8 @@ def write_excel(
     sheet.title = "Table 1"
     sheet.sheet_view.showGridLines = False
 
-    sheet.append([TITLE, "", "", "", ""])
-    sheet.append(["", "", "", "", ""])
+    sheet.append([TITLE, "", "", "", "", ""])
+    sheet.append(["", "", "", "", "", ""])
     sheet.append(HEADER)
 
     for row in rows:
@@ -633,7 +809,7 @@ def write_excel(
             else:
                 cell.number_format = "0.###"
 
-    sheet.merge_cells("A1:E1")
+    sheet.merge_cells("A1:F1")
     sheet.freeze_panes = "A4"
 
     thin = Side(
@@ -668,7 +844,7 @@ def write_excel(
         min_row=1,
         max_row=sheet.max_row,
         min_col=1,
-        max_col=5,
+        max_col=6,
     ):
         for cell in row:
             cell.font = Font(
@@ -716,7 +892,7 @@ def write_excel(
             sheet.cell(row_number, 1).value
             in section_names
         ):
-            for column_number in range(1, 6):
+            for column_number in range(1, 7):
                 cell = sheet.cell(
                     row_number,
                     column_number,
@@ -736,6 +912,7 @@ def write_excel(
         "C": 21,
         "D": 21,
         "E": 13,
+        "F": 15,
     }
 
     for name, width in column_widths.items():
@@ -751,7 +928,7 @@ def write_excel(
     ):
         sheet.row_dimensions[row_number].height = 15
 
-    sheet.print_area = f"A1:E{sheet.max_row}"
+    sheet.print_area = f"A1:F{sheet.max_row}"
     sheet.page_setup.orientation = "portrait"
     sheet.page_setup.fitToWidth = 1
     sheet.page_setup.fitToHeight = 1
@@ -770,7 +947,7 @@ def print_table(
             len(str(row[index]))
             for row in grid
         )
-        for index in range(5)
+        for index in range(len(HEADER))
     ]
 
     def line(character: str) -> str:
@@ -862,7 +1039,11 @@ def main() -> int:
     samples = load_samples(project_root)
     rows = build_table(samples)
 
-    generated_digest = table_digest(rows)
+    # Preserve the original five-column reference/QC check
+    # while allowing the new Effect Size column.
+    generated_digest = table_digest(
+        [row[:5] for row in rows]
+    )
 
     reference_pass = (
         generated_digest
@@ -884,6 +1065,8 @@ def main() -> int:
             "data/ADNI (source CSV unchanged)"
         ),
         "Age test: two-sided Welch t-test",
+        "Age effect size: Cohen's d (AD minus Control)",
+        "Categorical effect size: Cramer's V",
         (
             "Categorical tests: Pearson chi-square; "
             "Yates correction for 2x2 tables"

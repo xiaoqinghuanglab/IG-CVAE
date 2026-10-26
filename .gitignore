@@ -39,8 +39,6 @@
 /Output/QC/*
 !/Output/QC/.gitkeep
 
-/Output/Table/*
-!/Output/Table/.gitkeep
 
 /Data/
 /output/
@@ -92,3 +90,8 @@ slurm-*.err
 # Operating-system files
 .DS_Store
 Thumbs.db
+
+# Local participant-level analysis inputs
+/Output/Table/gene_explainability_source/development_expression_long.csv
+/Output/Table/gene_explainability_source/fixed_DEG_results/QC/DEG/ADNI_DEG_design_matrix.csv
+/Output/Table/gene_explainability_source/fixed_DEG_results/QC/DEG/AddNeuroMed_DEG_design_matrix.csv

@@ -1,0 +1,17 @@
+cohort: AddNeuroMed
+contrast: AD - CN
+split_version: dual_cohort_independent_v1
+development_eligible: 280
+development_analyzed: 269
+development_excluded_missing_covariates: 11
+development_AD: 139
+development_CN: 130
+locked_test_excluded_from_DEG: 70
+genes_tested: 4438
+covariates: age, sex, APOE e4 allele count, and microarray batch
+model_formula: ~Diagnosis + Age + Sex + APOE4 + Batch
+nominal_P_le_0.05: 2072
+BH_FDR_le_0.05: 1661
+top500_raw_P_cutoff: 5.4000912e-05
+locked_test_labels_used: false
+model_input: /N/project/SingleCell_Image/Ronak/Project_folder/Output/Model_input/Gene/AddNeuroMed_top500_gene_model_input.csv

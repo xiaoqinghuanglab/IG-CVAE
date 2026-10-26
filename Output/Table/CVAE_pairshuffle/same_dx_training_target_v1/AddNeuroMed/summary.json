@@ -1,0 +1,71 @@
+{
+  "cohort": "AddNeuroMed",
+  "locked_test_accessed": false,
+  "metrics": {
+    "cosine_similarity": {
+      "direction": "higher_is_better",
+      "p_value_one_sided": 0.04950495049504951,
+      "shuffle_2p5": 0.6367754086852074,
+      "shuffle_97p5": 0.650447244644165,
+      "shuffle_mean": 0.6439160380363463,
+      "shuffle_sd": 0.0035589110980881514,
+      "true": 0.6503115773200989,
+      "true_minus_shuffle_mean": 0.006395539283752583
+    },
+    "mae": {
+      "direction": "lower_is_better",
+      "p_value_one_sided": 0.09900990099009901,
+      "shuffle_2p5": 0.36129313319921497,
+      "shuffle_97p5": 0.3689549338817596,
+      "shuffle_mean": 0.3649625553488731,
+      "shuffle_sd": 0.0021541689122809393,
+      "true": 0.36176553964614866,
+      "true_minus_shuffle_mean": -0.0031970157027244595
+    },
+    "mse": {
+      "direction": "lower_is_better",
+      "p_value_one_sided": 0.039603960396039604,
+      "shuffle_2p5": 0.28015558704733845,
+      "shuffle_97p5": 0.28966979622840877,
+      "shuffle_mean": 0.2848274077773094,
+      "shuffle_sd": 0.0024945320072803224,
+      "true": 0.2799828052520752,
+      "true_minus_shuffle_mean": -0.004844602525234221
+    },
+    "pr_auc": {
+      "direction": "higher_is_better",
+      "p_value_one_sided": 0.5148514851485149,
+      "shuffle_2p5": 0.7577999332017188,
+      "shuffle_97p5": 0.7936491187384043,
+      "shuffle_mean": 0.7753959759486545,
+      "shuffle_sd": 0.00956063845862807,
+      "true": 0.7742634746206175,
+      "true_minus_shuffle_mean": -0.0011325013280369944
+    },
+    "r2": {
+      "direction": "higher_is_better",
+      "p_value_one_sided": 0.0297029702970297,
+      "shuffle_2p5": 0.2745930707454681,
+      "shuffle_97p5": 0.29761155933141703,
+      "shuffle_mean": 0.2866329774856567,
+      "shuffle_sd": 0.005997587024729125,
+      "true": 0.2983012557029724,
+      "true_minus_shuffle_mean": 0.011668278217315697
+    },
+    "roc_auc": {
+      "direction": "higher_is_better",
+      "p_value_one_sided": 0.4752475247524752,
+      "shuffle_2p5": 0.7062562003968255,
+      "shuffle_97p5": 0.7537921626984126,
+      "shuffle_mean": 0.7312509920634922,
+      "shuffle_sd": 0.012447648735002951,
+      "true": 0.7322420634920634,
+      "true_minus_shuffle_mean": 0.000991071428571244
+    }
+  },
+  "n_shuffles": 100,
+  "run_tag": "same_dx_training_target_v1",
+  "shuffle_rule": "training-fold GFV targets deranged within diagnosis only",
+  "test": "same_diagnosis_training_target_pair_shuffle",
+  "validation_pairing": "true participant pairing"
+}

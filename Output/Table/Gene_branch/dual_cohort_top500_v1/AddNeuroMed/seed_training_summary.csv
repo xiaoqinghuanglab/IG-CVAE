@@ -1,0 +1,16 @@
+cohort,fold,seed,best_epoch
+AddNeuroMed,1,20260817,66
+AddNeuroMed,1,20260818,72
+AddNeuroMed,1,20260819,76
+AddNeuroMed,2,20260917,44
+AddNeuroMed,2,20260918,75
+AddNeuroMed,2,20260919,72
+AddNeuroMed,3,20261017,43
+AddNeuroMed,3,20261018,49
+AddNeuroMed,3,20261019,36
+AddNeuroMed,4,20261117,17
+AddNeuroMed,4,20261118,15
+AddNeuroMed,4,20261119,15
+AddNeuroMed,5,20261217,24
+AddNeuroMed,5,20261218,26
+AddNeuroMed,5,20261219,51

@@ -78,7 +78,7 @@ def prepare_atlas():
         "compatible_for_shared_ADNI_AddNeuroMed_region_occlusion":
             all(v["incompatible_images"] == 0 for v in failures.values()),
     }
-    qc = ROOT / "Output/QC/MRI_ablation"
+    qc = ROOT / "Output/main_model/QC/MRI_ablation"
     qc.mkdir(parents=True, exist_ok=True)
     (qc / "atlas_preparation.json").write_text(json.dumps(report, indent=2))
     print(json.dumps(report, indent=2))
@@ -125,7 +125,7 @@ def make_region_figure(summary, cohort):
     fig.tight_layout()
 
     panel = "C" if cohort == "ADNI" else "D"
-    fig_dir = ROOT / "Output/Figure/Main/Figure4_components"
+    fig_dir = ROOT / "Output/main_model/Figure/Main/Figure4_components"
     fig_dir.mkdir(parents=True, exist_ok=True)
     stem = fig_dir / f"Figure4_component_{panel}_{cohort}_MRI_region_occlusion_development"
     fig.savefig(str(stem) + ".png", dpi=400, bbox_inches="tight")
@@ -299,7 +299,7 @@ def load_images(mri, rows, cache, device):
     return torch.cat(images, dim=0), np.asarray(labels), list(ids)
 
 def load_fold_model(mri, cohort, fold, device):
-    p = ROOT / "Output/Model/MRI_branch/dual_cohort_independent_v1" / cohort / f"fold_{fold}_best.pt"
+    p = ROOT / "Output/main_model/Model/MRI_branch/dual_cohort_independent_v1" / cohort / f"fold_{fold}_best.pt"
     ckpt = torch.load(p, map_location="cpu", weights_only=False)
     model = mri.MRIBranch(float(ckpt["config"]["dropout"])).to(device)
     model.load_state_dict(ckpt["state_dict"])

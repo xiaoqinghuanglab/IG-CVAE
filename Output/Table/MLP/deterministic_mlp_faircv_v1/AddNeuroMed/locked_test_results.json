@@ -1,0 +1,123 @@
+{
+  "AD": 9,
+  "CN": 11,
+  "baseline": "deterministic_MLP_MFV128_to_GFV128",
+  "bootstrap_replicates": 2000,
+  "branch_provenance_development": {
+    "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/seed_1_gene_encoder_classifier.pt",
+    "gene_model_sha256": "83f0244da96a430e6cfa79dae418b174e39d9041e895985b58e99c27c0976186",
+    "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/standard_scaler.joblib",
+    "gene_scaler_sha256": "f2fe9ebeb232f2870e4dce4e59f5fdb303a2dbb48446fec20692a4abe5727834",
+    "gene_seed": 20261617,
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/final_development_fit.pt",
+    "mri_model_sha256": "aff33ded71e41c112fb34ea9019b0111ff23fda4e9eeb7a2da746eefb080b7b2",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "branch_provenance_locked_test": {
+    "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/seed_1_gene_encoder_classifier.pt",
+    "gene_model_sha256": "83f0244da96a430e6cfa79dae418b174e39d9041e895985b58e99c27c0976186",
+    "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/final_development_models/standard_scaler.joblib",
+    "gene_scaler_sha256": "f2fe9ebeb232f2870e4dce4e59f5fdb303a2dbb48446fec20692a4abe5727834",
+    "gene_seed": 20261617,
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/final_development_fit.pt",
+    "mri_model_sha256": "aff33ded71e41c112fb34ea9019b0111ff23fda4e9eeb7a2da746eefb080b7b2",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "classification": {
+    "accuracy": 0.55,
+    "balanced_accuracy": 0.5404040404040404,
+    "brier": 0.24720999844598784,
+    "f1": 0.47058823529411764,
+    "mcc": 0.08206099398622181,
+    "pr_auc": 0.7414301747635081,
+    "precision": 0.5,
+    "roc_auc": 0.7575757575757576,
+    "sensitivity": 0.4444444444444444
+  },
+  "cohort": "AddNeuroMed",
+  "config": {
+    "batch_size": 32,
+    "cosine_weight": 0.2,
+    "dropout": 0.1,
+    "hidden_dim": 256,
+    "learning_rate": 0.001,
+    "max_epochs": 200,
+    "patience": 20,
+    "seed": 20261010,
+    "weight_decay": 0.0001
+  },
+  "final_epochs_from_mean_CV_best_epoch": 3,
+  "n": 20,
+  "reconstruction": {
+    "cosine_similarity": 0.5767928957939148,
+    "mae": 0.4001818299293518,
+    "mse": 0.331251323223114,
+    "r2": 0.18727844953536987
+  },
+  "run_tag": "deterministic_mlp_faircv_v1",
+  "status": "locked_test_complete",
+  "stratified_bootstrap_95ci": {
+    "accuracy": [
+      0.35,
+      0.75
+    ],
+    "balanced_accuracy": [
+      0.3282828282828283,
+      0.7426767676767663
+    ],
+    "brier": [
+      0.13944098823350548,
+      0.36981948965014344
+    ],
+    "cosine_similarity": [
+      0.489323990046978,
+      0.6678074166178702
+    ],
+    "f1": [
+      0.14285714285714285,
+      0.7275119617224868
+    ],
+    "mae": [
+      0.35839643254876136,
+      0.4435699567198753
+    ],
+    "mcc": [
+      -0.37283929381053577,
+      0.5044296328024895
+    ],
+    "mse": [
+      0.2665060967206955,
+      0.39433560669422146
+    ],
+    "pr_auc": [
+      0.5532134339426006,
+      0.929505070546737
+    ],
+    "precision": [
+      0.2,
+      0.8
+    ],
+    "r2": [
+      0.03381585031747818,
+      0.3413920715451238
+    ],
+    "roc_auc": [
+      0.5050505050505051,
+      0.9393939393939393
+    ],
+    "sensitivity": [
+      0.1111111111111111,
+      0.7777777777777778
+    ]
+  }
+}

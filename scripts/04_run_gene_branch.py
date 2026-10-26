@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import os
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 import ast
 import csv
 import hashlib

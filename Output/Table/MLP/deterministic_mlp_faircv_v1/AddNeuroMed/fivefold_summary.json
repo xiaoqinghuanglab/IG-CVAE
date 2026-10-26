@@ -1,0 +1,142 @@
+{
+  "accuracy_mean": 0.6683333333333333,
+  "accuracy_sd": 0.09685147563838833,
+  "balanced_accuracy_mean": 0.6670634920634921,
+  "balanced_accuracy_sd": 0.09582943072667625,
+  "baseline": "deterministic_MLP_MFV128_to_GFV128",
+  "best_epochs": [
+    4,
+    2,
+    5,
+    3,
+    1
+  ],
+  "branch_provenance": {
+    "1": {
+      "cohort": "AddNeuroMed",
+      "cvae_fold": 1,
+      "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_1/seed_1_gene_encoder_classifier.pt",
+      "gene_model_sha256": "418f81d2f2e9a090d2ebd9cd876cdc6da8a966f8b261ed3f98f713d910127762",
+      "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_1/standard_scaler.joblib",
+      "gene_scaler_sha256": "ab1b31e2d0b30f593b0da0af8c6eaafc1f8e6d2312a5461b47196caf92c17ede",
+      "gene_seed": 20260817,
+      "mri_best_epoch": 2,
+      "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/fold_1_best.pt",
+      "mri_model_sha256": "98c8deb3b30d480ecd05c886796dc3bd871fe670667a7e35b490a6e1aa3d09ae",
+      "mri_target_shape": [
+        48,
+        56,
+        48
+      ],
+      "representation_rule": "All paired CVAE development subjects were embedded with the matched fold-specific frozen gene and MRI encoders. Fixed-fold agreement verifies the CVAE validation subjects were excluded from those branch encoders' training sets."
+    },
+    "2": {
+      "cohort": "AddNeuroMed",
+      "cvae_fold": 2,
+      "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_2/seed_1_gene_encoder_classifier.pt",
+      "gene_model_sha256": "6c4cf012c9b3f594e10047baec21de9d190a501b8155df037d55b49e45d59ed3",
+      "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_2/standard_scaler.joblib",
+      "gene_scaler_sha256": "47c791538182ef863f7f7f70dc684816f891fa5cbc1b7ce16d711ff1e8c64d9a",
+      "gene_seed": 20260917,
+      "mri_best_epoch": 21,
+      "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/fold_2_best.pt",
+      "mri_model_sha256": "dd99ddc37e2fb17864aad9b011a2cdeaf0b69e819184428d723e2505042dcb92",
+      "mri_target_shape": [
+        48,
+        56,
+        48
+      ],
+      "representation_rule": "All paired CVAE development subjects were embedded with the matched fold-specific frozen gene and MRI encoders. Fixed-fold agreement verifies the CVAE validation subjects were excluded from those branch encoders' training sets."
+    },
+    "3": {
+      "cohort": "AddNeuroMed",
+      "cvae_fold": 3,
+      "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_3/seed_1_gene_encoder_classifier.pt",
+      "gene_model_sha256": "a83b3dd5c210158a580ae81d3154a03ae068f429eadc7c18880d906432747487",
+      "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_3/standard_scaler.joblib",
+      "gene_scaler_sha256": "1962429df5d750fb789b66ca79667f7cd7cb43d8e06191eeb4d2efe4d864b290",
+      "gene_seed": 20261017,
+      "mri_best_epoch": 2,
+      "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/fold_3_best.pt",
+      "mri_model_sha256": "6d6eae7b34c45077388f25dc75adfa6b8abe3688b15ed76ad34a024cd541c68e",
+      "mri_target_shape": [
+        48,
+        56,
+        48
+      ],
+      "representation_rule": "All paired CVAE development subjects were embedded with the matched fold-specific frozen gene and MRI encoders. Fixed-fold agreement verifies the CVAE validation subjects were excluded from those branch encoders' training sets."
+    },
+    "4": {
+      "cohort": "AddNeuroMed",
+      "cvae_fold": 4,
+      "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_4/seed_1_gene_encoder_classifier.pt",
+      "gene_model_sha256": "9b9066ee82064046c098fab3e4dcc943f2731a1e7e122fcafe3014bb572b2980",
+      "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_4/standard_scaler.joblib",
+      "gene_scaler_sha256": "66f18db2358efae968e71c57b9bcb06ffa94ae8f5abf53e7be9361268aa096c9",
+      "gene_seed": 20261117,
+      "mri_best_epoch": 1,
+      "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/fold_4_best.pt",
+      "mri_model_sha256": "0cf4999878dc308c1015c8b2bd6f48202116efd075207a33cff3f5a902b6f9de",
+      "mri_target_shape": [
+        48,
+        56,
+        48
+      ],
+      "representation_rule": "All paired CVAE development subjects were embedded with the matched fold-specific frozen gene and MRI encoders. Fixed-fold agreement verifies the CVAE validation subjects were excluded from those branch encoders' training sets."
+    },
+    "5": {
+      "cohort": "AddNeuroMed",
+      "cvae_fold": 5,
+      "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_5/seed_1_gene_encoder_classifier.pt",
+      "gene_model_sha256": "103912a7cf68ed6236ceb596c4371be817de5fd081fbb459966a689a0b77da94",
+      "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/AddNeuroMed/fold_5/standard_scaler.joblib",
+      "gene_scaler_sha256": "16228443fb1640fbc8e97164a1f17e7afd9f343c669e572efd3a7f0961920815",
+      "gene_seed": 20261217,
+      "mri_best_epoch": 15,
+      "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/AddNeuroMed/fold_5_best.pt",
+      "mri_model_sha256": "6fd4f1c74138d9f982e0794df9c1749f4fc34bbba59734b0f71dbf88a309d07f",
+      "mri_target_shape": [
+        48,
+        56,
+        48
+      ],
+      "representation_rule": "All paired CVAE development subjects were embedded with the matched fold-specific frozen gene and MRI encoders. Fixed-fold agreement verifies the CVAE validation subjects were excluded from those branch encoders' training sets."
+    }
+  },
+  "brier_mean": 0.24254930194580462,
+  "brier_sd": 0.05469344180950193,
+  "cohort": "AddNeuroMed",
+  "config": {
+    "batch_size": 32,
+    "cosine_weight": 0.2,
+    "dropout": 0.1,
+    "hidden_dim": 256,
+    "learning_rate": 0.001,
+    "max_epochs": 200,
+    "patience": 20,
+    "seed": 20261010,
+    "weight_decay": 0.0001
+  },
+  "cosine_similarity_mean": 0.6569047927856445,
+  "cosine_similarity_sd": 0.022858374473463214,
+  "f1_mean": 0.6505042016806722,
+  "f1_sd": 0.08921203638827692,
+  "locked_test_accessed": false,
+  "mae_mean": 0.35914698243141174,
+  "mae_sd": 0.015922539154408267,
+  "mcc_mean": 0.34149713033909873,
+  "mcc_sd": 0.1968862464116446,
+  "mse_mean": 0.2763710290193558,
+  "mse_sd": 0.02472339230164509,
+  "n": 78,
+  "pr_auc_mean": 0.7723657592407592,
+  "pr_auc_sd": 0.09994355125067307,
+  "precision_mean": 0.6615873015873015,
+  "precision_sd": 0.10165176526111307,
+  "r2_mean": 0.3077460765838623,
+  "r2_sd": 0.03613716011528929,
+  "roc_auc_mean": 0.7184027777777777,
+  "roc_auc_sd": 0.09891101874412045,
+  "sensitivity_mean": 0.6535714285714287,
+  "sensitivity_sd": 0.1380901066370086
+}

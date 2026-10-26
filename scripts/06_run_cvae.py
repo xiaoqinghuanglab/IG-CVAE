@@ -2,6 +2,8 @@
 """Leakage-controlled conditional VAE: MRI MFV128 -> generated gene GFV128."""
 from __future__ import annotations
 import argparse, hashlib, importlib.util, json, logging, random, sys
+import os
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
 from dataclasses import asdict, dataclass
 from pathlib import Path
 

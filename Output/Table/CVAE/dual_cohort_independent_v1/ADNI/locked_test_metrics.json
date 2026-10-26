@@ -1,0 +1,110 @@
+{
+  "AD": 25,
+  "CN": 33,
+  "bootstrap_replicates": 2000,
+  "branch_provenance_development": {
+    "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/seed_1_gene_encoder_classifier.pt",
+    "gene_model_sha256": "9a70c7d434105ce9b3347caf79fe8355e9389cfd657a952efa2d8c7c7d77d979",
+    "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/standard_scaler.joblib",
+    "gene_scaler_sha256": "2b7e8519f580ee47c6842424040b96ada233a98fedd5485477612da8c7cffd25",
+    "gene_seed": 20261617,
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "mri_model_sha256": "644bcadab736df4770df413e47af8657a4da937555891be32bfe450e41fec443",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "branch_provenance_locked_test": {
+    "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/seed_1_gene_encoder_classifier.pt",
+    "gene_model_sha256": "9a70c7d434105ce9b3347caf79fe8355e9389cfd657a952efa2d8c7c7d77d979",
+    "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/standard_scaler.joblib",
+    "gene_scaler_sha256": "2b7e8519f580ee47c6842424040b96ada233a98fedd5485477612da8c7cffd25",
+    "gene_seed": 20261617,
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "mri_model_sha256": "644bcadab736df4770df413e47af8657a4da937555891be32bfe450e41fec443",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "classification": {
+    "accuracy": 0.8448275862068966,
+    "balanced_accuracy": 0.8393939393939394,
+    "brier": 0.12864794295932946,
+    "f1": 0.8163265306122449,
+    "mcc": 0.6825209291853219,
+    "pr_auc": 0.9327437454866763,
+    "precision": 0.8333333333333334,
+    "roc_auc": 0.9393939393939394,
+    "sensitivity": 0.8
+  },
+  "cohort": "ADNI",
+  "final_epochs_from_mean_CV_best_epoch": 7,
+  "n": 58,
+  "reconstruction": {
+    "cosine_similarity": 0.5904769897460938,
+    "mae": 0.37487733364105225,
+    "mse": 0.33372676372528076,
+    "r2": 0.16130214929580688
+  },
+  "status": "locked_test_complete",
+  "stratified_bootstrap_95ci": {
+    "accuracy": [
+      0.7413793103448276,
+      0.9310344827586207
+    ],
+    "balanced_accuracy": [
+      0.7387878787878788,
+      0.9296969696969697
+    ],
+    "brier": [
+      0.053650317727306426,
+      0.21177047590381648
+    ],
+    "cosine_similarity": [
+      0.5372188612818718,
+      0.6422266215085983
+    ],
+    "f1": [
+      0.6938775510204082,
+      0.92
+    ],
+    "mae": [
+      0.3495744071900845,
+      0.4009719520807266
+    ],
+    "mcc": [
+      0.4755624813414886,
+      0.860187453034068
+    ],
+    "mse": [
+      0.2918033853173256,
+      0.37613958865404123
+    ],
+    "pr_auc": [
+      0.8652452083339404,
+      0.9860370813397129
+    ],
+    "precision": [
+      0.7096774193548387,
+      0.9565217391304348
+    ],
+    "r2": [
+      0.05622843652963638,
+      0.2678615003824234
+    ],
+    "roc_auc": [
+      0.8727272727272728,
+      0.9866666666666667
+    ],
+    "sensitivity": [
+      0.64,
+      0.96
+    ]
+  }
+}

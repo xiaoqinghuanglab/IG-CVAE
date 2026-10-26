@@ -1,0 +1,121 @@
+{
+  "AD": 25,
+  "CN": 33,
+  "analysis": "covariate_adjusted_CVAE_sensitivity",
+  "batch_covariate_included": false,
+  "bootstrap_replicates": 2000,
+  "branch_provenance_development": {
+    "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/seed_1_gene_encoder_classifier.pt",
+    "gene_model_sha256": "9a70c7d434105ce9b3347caf79fe8355e9389cfd657a952efa2d8c7c7d77d979",
+    "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/standard_scaler.joblib",
+    "gene_scaler_sha256": "2b7e8519f580ee47c6842424040b96ada233a98fedd5485477612da8c7cffd25",
+    "gene_seed": 20261617,
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "mri_model_sha256": "644bcadab736df4770df413e47af8657a4da937555891be32bfe450e41fec443",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "branch_provenance_locked_test": {
+    "gene_model": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/seed_1_gene_encoder_classifier.pt",
+    "gene_model_sha256": "9a70c7d434105ce9b3347caf79fe8355e9389cfd657a952efa2d8c7c7d77d979",
+    "gene_scaler": "Output/Model/Gene_branch/dual_cohort_top500_v1/ADNI/final_development_models/standard_scaler.joblib",
+    "gene_scaler_sha256": "2b7e8519f580ee47c6842424040b96ada233a98fedd5485477612da8c7cffd25",
+    "gene_seed": 20261617,
+    "mri_epochs": -1,
+    "mri_model": "Output/Model/MRI_branch/dual_cohort_independent_v1/ADNI/final_development_fit.pt",
+    "mri_model_sha256": "644bcadab736df4770df413e47af8657a4da937555891be32bfe450e41fec443",
+    "mri_target_shape": [
+      48,
+      56,
+      48
+    ]
+  },
+  "classification": {
+    "accuracy": 0.8620689655172413,
+    "balanced_accuracy": 0.8545454545454545,
+    "brier": 0.13363991808987644,
+    "f1": 0.8333333333333334,
+    "mcc": 0.717845449393623,
+    "pr_auc": 0.9071122089443753,
+    "precision": 0.8695652173913043,
+    "roc_auc": 0.8981818181818182,
+    "sensitivity": 0.8
+  },
+  "cohort": "ADNI",
+  "covariates": [
+    "age",
+    "sex_male",
+    "apoe4_count"
+  ],
+  "final_checkpoint": "Output/Model/CVAE_covadj/covadj_age_sex_apoe4_v1/ADNI/final_development_fit.pt",
+  "final_epochs_from_mean_CV_best_epoch": 6,
+  "n": 58,
+  "primary_cvae_script": "scripts/06_run_cvae.py",
+  "primary_cvae_script_sha256": "5075f776abec88f1039099f94d6c2f2f3faa078d8132be02f18b004090454289",
+  "reconstruction": {
+    "cosine_similarity": 0.6046122312545776,
+    "mae": 0.3931456208229065,
+    "mse": 0.3590654730796814,
+    "r2": 0.22266358137130737
+  },
+  "run_tag": "covadj_age_sex_apoe4_v1",
+  "status": "locked_test_complete",
+  "stratified_bootstrap_95ci": {
+    "accuracy": [
+      0.7758620689655172,
+      0.9482758620689655
+    ],
+    "balanced_accuracy": [
+      0.7593939393939394,
+      0.94
+    ],
+    "brier": [
+      0.05416149004526306,
+      0.21911331992773736
+    ],
+    "cosine_similarity": [
+      0.5534522756934166,
+      0.6556396514177323
+    ],
+    "f1": [
+      0.7169137466307277,
+      0.9361702127659575
+    ],
+    "mae": [
+      0.3645875118672848,
+      0.4220019921660423
+    ],
+    "mcc": [
+      0.5393825898249827,
+      0.8945899321821897
+    ],
+    "mse": [
+      0.3030020534992218,
+      0.41588745266199106
+    ],
+    "pr_auc": [
+      0.8156151174335433,
+      0.9796590909090909
+    ],
+    "precision": [
+      0.7407407407407407,
+      1.0
+    ],
+    "r2": [
+      0.11726411730051041,
+      0.3274754017591476
+    ],
+    "roc_auc": [
+      0.7866666666666666,
+      0.9806060606060606
+    ],
+    "sensitivity": [
+      0.64,
+      0.96
+    ]
+  }
+}
