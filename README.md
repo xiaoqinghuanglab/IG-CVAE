@@ -30,7 +30,7 @@ IG-CVAE/
 └── Output/Table/                  
 ```
 
-`Output/Table/` contains results for the gene and MRI branches, CVAE, regional and gene ablations, MLP, covariate-adjusted CVAE, pair-shuffle control, and supplementary tables. Participant-level expression and DEG design matrices in that tree are explicitly excluded by `.gitignore`. Other local output directories contain checkpoints, figures, logs, and intermediate representations and are not published here.
+`Output/Table/` contains results for the gene and MRI branches, CVAE, regional and gene ablations, MLP, covariate-adjusted CVAE, and pair-shuffle control. 
 
 ## Setup and inputs
 
@@ -112,7 +112,7 @@ python scripts/08_run_mri_ablation.py RUN --cohort ALL --device auto
 
 ### 6. Region–gene-feature analysis
 
-Uses frozen MRI and CVAE fold models, atlas labels, and the gene permutation ranking. This version of Script 09 writes region and gene-effect tables and does not generate a plot.
+Uses frozen MRI and CVAE fold models, atlas labels, and the gene permutation ranking. This version of Script 09 writes region and gene-effect tables.
 
 ```bash
 python scripts/09_run_cvae_ablation.py VALIDATE --cohort ALL
@@ -143,7 +143,7 @@ After development review, use `python scripts/11_covadj_cvae.py TEST --cohort AL
 
 ### 9. Pair-shuffle control
 
-Shuffles training targets among subjects with the same diagnosis. The default is 200 shuffles per cohort; `RUN` does not access the locked test.
+Shuffles training targets among subjects with the same diagnosis. The default is 200 shuffles per cohort (We used 100 shuffles per cohort); `RUN` does not access the locked test.
 
 ```bash
 python scripts/12_pair_shuffle_test.py VALIDATE --cohort ALL
