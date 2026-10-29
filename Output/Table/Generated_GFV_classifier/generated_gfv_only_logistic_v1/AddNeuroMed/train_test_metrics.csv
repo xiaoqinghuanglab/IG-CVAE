@@ -1,3 +1,0 @@
-cohort,split,n,AD,CN,roc_auc,pr_auc,accuracy,balanced_accuracy,sensitivity,specificity,precision,f1,mcc
-AddNeuroMed,development_train,89,45,44,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
-AddNeuroMed,locked_test,22,11,11,0.8512396694214877,0.8031551781551781,0.7727272727272727,0.7727272727272727,1.0,0.5454545454545454,0.6875,0.8148148148148148,0.6123724356957945
